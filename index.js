@@ -1,10 +1,19 @@
+const messageForm = document.querySelector("#message-form");
+
 const { hash } = window.location;
-console.log(atob(hash.replace("#", "")));
+const message = atob(hash.replace("#", ""));
+
+if (message) {
+  messageForm.classList.add("hide");
+  document.querySelector("#message-show").classList.remove("hide");
+
+  document.querySelector("h1").innerText = message;
+}
 
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
 
-  document.querySelector("#message-form").classList.add("hide");
+  messageForm.classList.add("hide");
   document.querySelector("#link-form").classList.remove("hide");
 
   const messageInput = document.querySelector("#message-input");
